@@ -4,17 +4,21 @@ import json
 
 def on_submit():
     data = {
-        "First Name": First_Name.get(),
-        "Last Name": Last_Name.get(),
-        "Phone Number": Phone.get(),
-        "Email Address": Email.get()
+        "Personal Information": {
+            "First Name": First_Name.get(),
+            "Last Name": Last_Name.get()
+        },
+        "Contact Information": {
+            "Phone Number": Phone.get(),
+            "Email Address": Email.get()
+        }
     }
     if First_Name.get() == "" and Last_Name.get() == "":
         print("No name entered saving as no_name.json")
-        with open("no_name.json", "w") as json_file:
+        with open("history/no_name.json", "w") as json_file:
             json.dump(data, json_file, indent=4)
     else:
-        with open(f"{First_Name.get()}_{Last_Name.get()}.json", "w") as json_file:
+        with open(f"history/{First_Name.get()}_{Last_Name.get()}.json", "w") as json_file:
             json.dump(data, json_file, indent=4)
 
 root = tk.Tk()
